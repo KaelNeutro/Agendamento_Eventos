@@ -18,6 +18,8 @@
   <!--JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -64,7 +66,7 @@
             </div>  
             <!-- Input QUANTIDADE PESSOAS -->
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Quantidade de pessoas</label>
+              <label class="col-sm-2 col-form-label">Número de pessoas</label>
               <div class="col-sm-10">
                 <input type="number" name="qtd_pessoas" class="form-control" id="qtd_pessoas" placeholder="" min="1" required="">
                 <div class="valid-feedback">
@@ -100,25 +102,52 @@
                   <option style="color:#1C1C1C;" value="#1C1C1C">Palestra</option>
                   <option style="color:#436EEE;" value="#436EEE">Ação Social</option>
                   <option style="color:#A020F0;" value="#A020F0">Outros</option>
-                  <option style="color:#40E0D0;" value="#40E0D0" disabled="">Turquesa</option>
-                  <option style="color:#228B22;" value="#228B22" disabled="">Verde</option>
-                  <option style="color:#8B0000;" value="#8B0000" disabled="">Vermelho</option>
                 </select>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Início do evento</label>
-              <div class="col-sm-10">
-                <input type="text" name="start" class="form-control" id="start" onkeypress="DataHora(event, this)">
+            <!--  DATA E HORA DO EVENTOS -->
+            <div  class="col-sm row">
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="" for="start">Data início </label>
+                  <input type="date" name="start" class="form-control" id="start"  disabled="">
+                </div>
+                <div class="form-group">
+                  <label class="" for="start">Horario</label>
+                  <input type="time" name="timestart" class=" form-control ">
+                </div>
+              </div>
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="" for="end">Data fim</label>
+                  <input type="date" name="end" class="form-control" id="end"  onkeypress="">
+                </div>
+                <div class="form-group">
+                  <label class="" for="start">Horario</label>
+                  <input type="time" name="timeend" class=" form-control ">
+                </div>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Final do evento</label>
-              <div class="col-sm-10">
-                <input type="text" name="end" class="form-control" id="end"  onkeypress="DataHora(event, this)">
+            <!-- ENDEREÇOS PARA AS PARTIDAS    -->     
+            <div  class="col-sm row">
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="" for="cepstart">CEP  </label>
+                  <input type="text" name="cepstart" class="form-control" id="cepstart"  >
+                  <label id="labelcepstart"> Endereço </label>
+                </div>
+              </div>
+              <div class="form-group col">
+                <div class="form-group">
+                  <label class="" for="cepend">CEP  </label>
+                  <input type="text" name="cepend" class="form-control" id="cepend"  >
+                  <label id="labelcepend"></label>
+                </div>
               </div>
             </div>
+            <div  class="col-sm row">
 
+            </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-success">Cadastrar</button>                                    
