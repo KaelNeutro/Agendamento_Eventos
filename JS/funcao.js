@@ -61,13 +61,13 @@ $(document).ready( function() {
 //PROCURAR ENDEREÇO VIA CEP
 
 $(document).ready(function() {
-  function limpa_formulário_cep() {
-    // Limpa valores do formulário de cep.
-    $("#labelcepstart").val("");
-    $("#labelcepend").val("");
-    $("#cepstart").val("");
-    $("#cepend").val("");
-  }
+  // function limpa_formulário_cep() {
+  //   // Limpa valores do formulário de cep.
+  //   $("#labelcepstart").val("");
+  //   $("#labelcepend").val("");
+  //   $("#cepstart").val("");
+  //   $("#cepend").val("");
+  // }
 
   //CEP START
   //Quando o campo cep perde o foco.
@@ -94,22 +94,32 @@ $(document).ready(function() {
 
             if (!("erro" in dados)) {              //Atualiza os campos com os valores da consulta.
              ender = " " + dados.logradouro + ", " + dados.bairro + ", " + dados.localidade;
-             alert("- ". ender);
+
              $("#labelcepstart").html(ender);
               } //end if.
               else {                                //CEP pesquisado não foi encontrado.
-                limpa_formulário_cep();
+                // limpa_formulário_cep();
+                $("#labelcepstart").val("");
+
+                $("#cepstart").val("");
                 alert("CEP não encontrado.");
               }
             });
         } //end if.
         else {//cep é inválido.
-          limpa_formulário_cep();
+          // limpa_formulário_cep();
+          $("#labelcepstart").val("");
+
+          $("#cepstart").val("");
+
           alert("Formato de CEP inválido.");
         }
       } //end if.
       else {//cep sem valor, limpa formulário.
-        limpa_formulário_cep();
+        // limpa_formulário_cep();
+        $("#labelcepstart").val("");
+
+        $("#cepstart").val("");
       }
     });
     //CEP END
@@ -137,21 +147,34 @@ $(document).ready(function() {
 
             if (!("erro" in dados)) {              //Atualiza os campos com os valores da consulta.
              ender = " " + dados.logradouro + ", " + dados.bairro + ", " + dados.localidade;
-             $("#labelcepEND").html(ender);
+             $("#labelcepend").html(ender);
               } //end if.
               else {                                //CEP pesquisado não foi encontrado.
-                limpa_formulário_cep();
-                alert("CEP não encontrado.");
-              }
-            });
+                 // limpa_formulário_cep();
+
+                 $("#labelcepend").val("");
+
+                 $("#cepend").val("");
+                 alert("CEP não encontrado.");
+               }
+             });
         } //end if.
         else {//cep é inválido.
-          limpa_formulário_cep();
+          // limpa_formulário_cep();
+
+          $("#labelcepend").val("");
+
+          $("#cepend").val("");
           alert("Formato de CEP inválido.");
         }
       } //end if.
       else {//cep sem valor, limpa formulário.
-        limpa_formulário_cep();
+        // limpa_formulário_cep();
+        // limpa_formulário_cep();
+
+        $("#labelcepend").val("");
+
+        $("#cepend").val("");
       }
     });
 });

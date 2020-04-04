@@ -54,7 +54,7 @@
         </div>
         <div class="modal-body">
           <span id="msg-cad"></span>
-          <form id="addevent" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+          <form id="addevent" method="POST" enctype="multipart/form-data" action="cad_event.php" class="needs-validation" novalidate>
             <!-- Input TITULO DE EVENTO -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Título</label>
@@ -82,7 +82,7 @@
               <label class="col-sm-2 col-form-label">Quantidade de Onibus</label>
               <div class="col-sm-10">
                 <input type="number" name="qtd_onibus" class="form-control" id="qtd_onibus" placeholder="" min="1" disabled="">
-                
+                <input type="hidden" name="qtd_onibus"  id="qtd_onibus" >
                 <div class="invalid-feedback">
                   Preenche o campo. Por favor!
                 </div>
@@ -113,7 +113,7 @@
                 <div class="form-group">
                   <label class="" for="start">Data início </label>
                   <input type="date" name="start" class="form-control" id="start"  disabled="">
-                  
+                  <input type="hidden" name="start" class="form-control" id="start" >
                 <div class="invalid-feedback">
                   Preenche o campo. Por favor!
                 </div>
