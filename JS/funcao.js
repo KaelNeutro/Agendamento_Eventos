@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
+
     locale: 'pt-br',
     plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
     header: {
@@ -9,19 +10,54 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
+
     //Selecionar o dia no calendario
     selectable: true,
     select: function(info){
+
       // alert('selected' + info.startStr + info.endStr);
-      $('#cadEvento #start').val(info.startStr.toLocaleString());
-      $('#cadEvento #end').val(info.endStr.toLocaleString());
-      $('#cadEvento').modal('show'); // mostrar janela modal para cadastra evento
+      var ini = info.startStr.toLocaleString();
+      var fim = info.endStr.toLocaleString();
+
+      abreModal(ini,fim);
+      // $('#cadEvento #start').val(info.startStr.toLocaleString());
+      // $('#cadEvento #end').val(info.endStr.toLocaleString());
+      // $('#cadEvento').modal('show'); // mostrar janela modal para cadastra evento
+
     }
   });
 
   calendar.render();
 });
 
+
+
+// Mostra o MODAL 
+$(document).on('shown.bs.modal', '.modal', function () {
+  $('.modal-backdrop').before($(this));
+});
+//função abri modal cadastro de eventos
+var cont=-1;
+function abreModal(ini,fim){
+  cont=cont+1;
+  var ndiv = "#cadEvento"+cont;
+  var dados = {ini: ini, cont:cont};
+  $.ajax({
+    type: 'POST',
+    url: 'modal_form.php',//Caminho do arquivo do seu modal
+    data      : dados,
+    dataType  : 'html', 
+    error: function(xhr) {
+      $("div#error").html('Erro ao passar variavel: ' + xhr.responseText);
+    },
+    success: function(data){              
+      $('#form').html(data);
+      // $('#cadEvento #start').val(ini);
+      // $('#cadEvento #end').val(fim);
+      $(ndiv).modal('show');
+    }
+  });
+}
 
 //VALIDAR FORMULARIOS COM BOOTSTRAP
 (function() {
@@ -38,29 +74,31 @@ var validation = Array.prototype.filter.call(forms, function(form) {
     }
     form.classList.add('was-validated');
   }, false);
-});
+}); 
 }, false);
 })();
 
 
 //CALCULAR QUANTIDAdE DE ONIBUS
-$(document).ready( function() {
-  var onibus = 0;
+function onibus(){
+ 
+    var onibus = 0;
 
-  jQuery('#qtd_pessoas').on('keyup',function(){
+    $('#qtd_pessoas').on('keyup',function(){
 
-    var pessoas = jQuery('#qtd_pessoas').val();
-    onibus = Math.ceil(pessoas/40);
-    
+      var pessoas = $('#qtd_pessoas').val();
+      onibus = Math.ceil(pessoas/40);
 
-    jQuery('#qtd_onibus').val(onibus);
-  });
-});
 
+      $('#qtd_onibus').val(onibus);
+      $('#viewqtd').html(onibus);
+    });
+ 
+}
 
 //PROCURAR ENDEREÇO VIA CEP
+function cep(){
 
-$(document).ready(function() {
   // function limpa_formulário_cep() {
   //   // Limpa valores do formulário de cep.
   //   $("#labelcepstart").val("");
@@ -177,4 +215,5 @@ $(document).ready(function() {
         $("#cepend").val("");
       }
     });
-});
+
+}

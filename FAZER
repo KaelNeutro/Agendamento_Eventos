@@ -1,0 +1,28 @@
+Lista para fazer 06/04
+
+- Criar tabelas bancos
+- formulario para add cor 
+- formulario para add onibus disponivel
+- inserção de dados
+- atualização
+- excluir
+- upload de dados do banco
+- upload do select	
+
+
+links
+
+// dias dentro de vetor
+https://pt.stackoverflow.com/questions/214760/pegar-todas-as-datas-de-um-dia-da-semana
+
+// cor em bancos de dados
+
+https://pt.stackoverflow.com/questions/40966/como-salvar-cores-no-banco-de-dados
+
+// mexer com datas e periodos de datas
+
+http://www.diogomatheus.com.br/blog/php/trabalhando-com-datas-no-php/	
+
+// GERADOR DADOS PARA CADASTRO
+
+https://www.4devs.com.br/gerador_de_cep

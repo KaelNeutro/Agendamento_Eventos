@@ -8,4 +8,10 @@
  #calendar {
  	max-width: 700px;
  	margin: 0 auto;
+ 	
  }
+
+/*
+.fc-unthemed .fc-body {
+	background:red !important;
+}*/

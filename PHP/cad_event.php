@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once './conexao.php';
+include_once 'conexao.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -9,7 +9,7 @@ foreach ($dados as $key => $value) {
 	# code...
 	echo "{$key} => {$value} ";
 	echo "</br>";
-    
+    	
 }
 
 // //Converter a data e hora do formato brasileiro para o formato do Banco de Dados

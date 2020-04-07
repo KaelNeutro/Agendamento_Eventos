@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset='utf-8' />
+
+  <!-- Responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -42,148 +44,8 @@
 
   <div id='calendar'></div>
 
-  <!-- FORMULARIO PARA CADASTRA EVENTO CONFORME O DIA -->
-  <div class="modal fade" id="cadEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Evento</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <span id="msg-cad"></span>
-          <form id="addevent" method="POST" enctype="multipart/form-data" action="cad_event.php" class="needs-validation" novalidate>
-            <!-- Input TITULO DE EVENTO -->
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Título</label>
-              <div class="col-sm-10">
-                <input type="text" name="title" class="form-control " id="title" placeholder="Título do evento" required="">
-                
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-              </div>
-            </div>  
-            <!-- Input QUANTIDADE PESSOAS -->
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Número de pessoas</label>
-              <div class="col-sm-10">
-                <input type="number" name="qtd_pessoas" class="form-control" id="qtd_pessoas" placeholder="" min="1" required="">
-                
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-              </div>
-            </div>
-            <!-- Input QUANTIDADE DE ONIBUS  -->
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Quantidade de Onibus</label>
-              <div class="col-sm-10">
-                <input type="number" name="qtd_onibus" class="form-control" id="qtd_onibus" placeholder="" min="1" disabled="">
-                <input type="hidden" name="qtd_onibus"  id="qtd_onibus" >
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Tipos de eventos</label>
-              <div class="col-sm-10">
-                <select name="color" class="form-control" id="color" required="">
-                  <option value="">Selecione</option>     
-                  <option style="color:#FFD700;" value="#FFD700">Escola</option>
-                  <option style="color:#0071c5;" value="#0071c5">Prefeitura</option>
-                  <option style="color:#FF4500;" value="#FF4500">Show</option>
-                  <option style="color:#8B4513;" value="#8B4513">Passeio</option> 
-                  <option style="color:#1C1C1C;" value="#1C1C1C">Palestra</option>
-                  <option style="color:#436EEE;" value="#436EEE">Ação Social</option>
-                  <option style="color:#A020F0;" value="#A020F0">Outros</option>
-                </select>
-                
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-              </div>
-            </div>
-            <!--  DATA E HORA DO EVENTOS -->
-            <div  class="col-sm row">
-              <div class="form-group col">
-                <div class="form-group">
-                  <label class="" for="start">Data início </label>
-                  <input type="date" name="start" class="form-control" id="start"  disabled="">
-                  <input type="hidden" name="start" class="form-control" id="start" >
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-                <div class="form-group">
-                  <label class="" for="start">Horario</label>
-                  <input type="time" name="timestart" class=" form-control " required="">
-                  
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-              </div>
-              <div class="form-group col">
-                <div class="form-group">
-                  <label class="" for="end">Data fim</label>
-                  <input type="date" name="end" class="form-control" id="end"  onkeypress="" required="">
-                  
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-                <div class="form-group">
-                  <label class="" for="start">Horario</label>
-                  <input type="time" name="timeend" class=" form-control " required="">
-                  
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-              </div>
-            </div>
-            <!-- ENDEREÇOS PARA AS PARTIDAS    -->     
-            <div  class="col-sm row">
-              <div class="form-group col">
-                <div class="form-group">
-                  <label class="" for="cepstart">CEP  </label>
-                  <input type="text" name="cepstart" class="form-control" id="cepstart" required="">
-                  <label id="labelcepstart"> Endereço </label>
-                  
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-              </div>
-              <div class="form-group col">
-                <div class="form-group">
-                  <label class="" for="cepend">CEP  </label>
-                  <input type="text" name="cepend" class="form-control" id="cepend"  required="">
-                  <label id="labelcepend"></label>
-                  
-                <div class="invalid-feedback">
-                  Preenche o campo. Por favor!
-                </div>
-                </div>
-              </div>
-            </div>
-            <div  class="col-sm row">
+  <div class="modal" id="form"></div>
 
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-success">Cadastrar</button>                                    
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
